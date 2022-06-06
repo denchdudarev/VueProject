@@ -38,7 +38,15 @@
     "parserOptions": {
       "parser": "@babel/eslint-parser"
     },
-    "rules": {}
+    "rules": {
+      "linebreak-style": 0,
+      "space-before-function-paren": 0,
+      "no-multiple-empty-lines": 0,
+      "eol-last": 0,
+      "indent": 0,
+      "no-trailing-spaces": 0,
+      "semi": 0
+    }
   },
   "browserslist": [
     "> 1%",
