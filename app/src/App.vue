@@ -1,7 +1,7 @@
 <template>
   <section class="catalog">
           <ul class="catalog__list">
-            <li class="catalog__item" v-for="{product, index} in products" :key="index">
+            <li class="catalog__item" v-for="(product, index) in products" :key="index">
               <a class="catalog__pic" href="#">
                 <img :src="product.img" alt="Название товара">
               </a>
@@ -49,7 +49,6 @@ import products from './data/products'
 
 export default {
   name: 'App',
-  components: products,
   data() {
     return {
       products
