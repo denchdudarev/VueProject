@@ -1,5 +1,5 @@
 <template>
-  <section class="catalog">
+    <section class="catalog">
           <ul class="catalog__list">
             <li class="catalog__item" v-for="(product, index) in products" :key="index">
               <a class="catalog__pic" href="#">
