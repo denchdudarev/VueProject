@@ -1,61 +1,61 @@
 export default [
     {
-        title: 'Skateboard',
+        title: 'Skateboard1',
         price: 3690,
         img: 'img/board.jpg'
     },
     {
-        title: 'Air Pods',
+        title: 'Air Pods1',
         price: 10000,
         img: '/img/airpods.jpg'
     },
     {
-        title: 'Phone',
+        title: 'Phone1',
         price: 30000,
         img: '/img/phone-1@2x.jpg'
     },
     {
-        title: 'Skateboard',
+        title: 'Skateboard2',
         price: 3690,
         img: 'img/board.jpg'
     },
     {
-        title: 'Air Pods',
+        title: 'Air Pods2',
         price: 10000,
         img: '/img/airpods.jpg'
     },
     {
-        title: 'Phone',
+        title: 'Phone2',
         price: 30000,
         img: '/img/phone-1@2x.jpg'
     },
     {
-        title: 'Skateboard',
+        title: 'Skateboard3',
         price: 3690,
         img: 'img/board.jpg'
     },
     {
-        title: 'Air Pods',
+        title: 'Air Pods3',
         price: 10000,
         img: '/img/airpods.jpg'
     },
     {
-        title: 'Phone',
+        title: 'Phone3',
         price: 30000,
         img: '/img/phone-1@2x.jpg'
     },
     {
-        title: 'Skateboard',
+        title: 'Skateboard4',
         price: 3690,
         img: 'img/board.jpg'
     },
     {
-        title: 'Air Pods',
+        title: 'Air Pods4',
         price: 10000,
         img: '/img/airpods.jpg'
     },
     {
-        title: 'Phone',
+        title: 'Phone4',
         price: 30000,
         img: '/img/phone-1@2x.jpg'
     }

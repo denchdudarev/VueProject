@@ -2,7 +2,7 @@
   <div>
     <ProductList :products="products"/>
 
-    <BasePagination :page="page" :count="count" :pre-page="prePage" />
+    <BasePagination v-model="page" :count="count" :per-page="perPage" />
   </div>
 
 </template>
@@ -24,11 +24,11 @@ export default {
   computed: {
     products() {
       const offset = (this.page - 1) * this.perPage;
-      return products.slice(offset, offset + this.perPage);
+      return products.slice(offset, offset + this.perPage );
     },
     count() {
       return products.length;
     }
-  }
+  },
 };
 </script>
