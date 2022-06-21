@@ -7,9 +7,9 @@
                 </svg>
                 </a>
             </li>
-            <li class="pagination__item">
-                <a class="pagination__link pagination__link--current">
-                1
+            <li class="pagination__item" v-for="pageNumber in pages" :key="pageNumber">
+                <a :class="{'pagination__link--current': pageNumber === page}" class="pagination__link" @click="paginate(pageNumber)">
+                {{pageNumber}}
                 </a>
             </li>
             <li class="pagination__item">
@@ -26,7 +26,21 @@
 <script>
 
 export default {
-    props: ['page', 'basePerPage', 'count'],
+    props: ['page', 'perPage', 'count'],
+    model: {
+        prop: 'page',
+        event: 'paginate',
+    },
+    computed: {
+        pages() {
+            return Math.ceil(this.count / this.perPage);
+        }
+    },
+    methods: {
+        paginate(page) {
+            this.$emit('paginate', page);
+        },
+    },
 }
 
 </script>
