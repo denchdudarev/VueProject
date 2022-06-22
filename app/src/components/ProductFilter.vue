@@ -19,8 +19,8 @@
             <legend class="form__legend">Категория</legend>
             <label class="form__label form__label--select">
               <select class="form__select" type="text" name="category" v-model="currentCategoryId">
-                <option>Все категории</option>
-                <option v-for="category in categories" :key="category.id">{{category.title}}</option>
+                <option :value="0">Все категории</option>
+                <option :value="category.id" v-for="category in categories" :key="category.id">{{category.title}}</option>
               </select>
             </label>
           </fieldset>
@@ -166,7 +166,7 @@ import categories from '../data/categories';
           submit() {
             this.$emit('update:priceMin', this.currentPriceMin);
             this.$emit('update:priceMax', this.currentPriceMax);
-            /*this.$emit('update: categoryId', this.currentCategoryId);*/
+            this.$emit('update:categoryId', this.currentCategoryId);
           }
         },
     }
