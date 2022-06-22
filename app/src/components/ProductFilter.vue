@@ -6,11 +6,11 @@
           <fieldset class="form__block">
             <legend class="form__legend">Цена</legend>
             <label class="form__label form__label--price">
-              <input class="form__input" type="text" name="min-price" v-model="currentPriceMin">
+              <input class="form__input" type="text" name="min-price" v-model.number="currentPriceMin">
               <span class="form__value">От</span>
             </label>
             <label class="form__label form__label--price">
-              <input class="form__input" type="text" name="max-price" v-model="currentPriceMax">
+              <input class="form__input" type="text" name="max-price" v-model.number="currentPriceMax">
               <span class="form__value">До</span>
             </label>
           </fieldset>
@@ -18,7 +18,7 @@
           <fieldset class="form__block">
             <legend class="form__legend">Категория</legend>
             <label class="form__label form__label--select">
-              <select class="form__select" type="text" name="category" v-model="currentCategoryId">
+              <select class="form__select" type="text" name="category" v-model.number="currentCategoryId">
                 <option :value="0">Все категории</option>
                 <option :value="category.id" v-for="category in categories" :key="category.id">{{category.title}}</option>
               </select>
@@ -138,7 +138,7 @@
           <button class="filter__submit button button--primery" type="submit">
             Применить
           </button>
-          <button class="filter__reset button button--second" type="button">
+          <button class="filter__reset button button--second" type="button" @click.prevent="reset">
             Сбросить
           </button>
         </form>
@@ -162,11 +162,27 @@ import categories from '../data/categories';
             return categories;
           }
         },
+        watch: {
+          priceMin(value) {
+            this.currentPriceMin = value;
+          },
+          priceMax(value) {
+            this.currentPriceMax = value;
+          },
+          categoryId(value) {
+            this.currentCategoryId = value;
+          },
+        },
         methods: {
           submit() {
             this.$emit('update:priceMin', this.currentPriceMin);
             this.$emit('update:priceMax', this.currentPriceMax);
             this.$emit('update:categoryId', this.currentCategoryId);
+          },
+          reset() {
+            this.$emit('update:priceMin', 0);
+            this.$emit('update:priceMax', 0);
+            this.$emit('update:categoryId', 0);
           }
         },
     }
