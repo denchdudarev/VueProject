@@ -2,15 +2,15 @@
     <aside class="filter">
         <h2 class="filter__title">Фильтры</h2>
 
-        <form class="filter__form form" action="#" method="get">
+        <form class="filter__form form" action="#" method="get" @submit.prevent="submit">
           <fieldset class="form__block">
             <legend class="form__legend">Цена</legend>
             <label class="form__label form__label--price">
-              <input class="form__input" type="text" name="min-price" value="0">
+              <input class="form__input" type="text" name="min-price" v-model="currentPriceMin">
               <span class="form__value">От</span>
             </label>
             <label class="form__label form__label--price">
-              <input class="form__input" type="text" name="max-price" value="12345">
+              <input class="form__input" type="text" name="max-price" v-model="currentPriceMax">
               <span class="form__value">До</span>
             </label>
           </fieldset>
@@ -18,9 +18,9 @@
           <fieldset class="form__block">
             <legend class="form__legend">Категория</legend>
             <label class="form__label form__label--select">
-              <select class="form__select" type="text" name="category">
-                <option value="value1">Все категории</option>
-                <option v-for="category in categories" :key="category.id" @click="selectCategory(category.id)" value="value2">{{category.title}}</option>
+              <select class="form__select" type="text" name="category" v-model="currentCategoryId">
+                <option>Все категории</option>
+                <option v-for="category in categories" :key="category.id">{{category.title}}</option>
               </select>
             </label>
           </fieldset>
@@ -146,16 +146,28 @@
 </template>
 
 <script>
+import categories from '../data/categories';
+
     export default {
-        props: ['categories', 'filterCategory'],
-        model: {
-            prop: 'filterCategory',
-            event: 'selectCategory',
+      data() {
+          return {
+            currentPriceMin: 0,
+            currentPriceMax: 0,
+            currentCategoryId: 0,
+          }
+        },
+        props: ['categoryId', 'priceMin', 'priceMax'],
+        computed: {
+          categories() {
+            return categories;
+          }
         },
         methods: {
-            selectCategory(category) {
-                this.$emit('selectCategory', category);
-            }
+          submit() {
+            this.$emit('update:priceMin', this.currentPriceMin);
+            this.$emit('update:priceMax', this.currentPriceMax);
+            /*this.$emit('update: categoryId', this.currentCategoryId);*/
+          }
         },
     }
 
