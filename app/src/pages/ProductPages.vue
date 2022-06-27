@@ -197,7 +197,7 @@
 
 <script>
     export default {
-        props: ['pageParems'],
+        props: ['pageParams'],
     }
 
 </script>
