@@ -3,9 +3,9 @@
     <div class="content__top">
       <ul class="breadcrumbs">
         <li class="breadcrumbs__item">
-          <a class="breadcrumbs__link" href="index.html">
+          <router-link class="breadcrumbs__link" :to="{name: 'main'}">
             Каталог
-          </a>
+          </router-link>
         </li>
         <li class="breadcrumbs__item">
           <a class="breadcrumbs__link" href="#">
@@ -200,10 +200,9 @@ import products from '@/data/products';
 import categories from '@/data/categories';
 
     export default {
-        props: ['pageParams'],
         computed: {
           product() {
-            return products.find(product => product.id === this.pageParams.id)
+            return products.find(product => product.id === +this.$route.params.id)
           },
           category() {
             return categories.find(category => category.id === this.product.categoryId);
