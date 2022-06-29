@@ -9,12 +9,12 @@
         </li>
         <li class="breadcrumbs__item">
           <a class="breadcrumbs__link" href="#">
-            Мобильный транспорт
+            {{ category.title }}
           </a>
         </li>
         <li class="breadcrumbs__item">
           <a class="breadcrumbs__link">
-            Смартфон Xiaomi Mi Mix 3 6/128GB
+            {{ product.title }}
           </a>
         </li>
       </ul>
@@ -23,7 +23,7 @@
     <section class="item">
       <div class="item__pics pics">
         <div class="pics__wrapper">
-          <img width="570" height="570" src="img/phone-square.jpg" srcset="img/phone-square@2x.jpg 2x" alt="Название товара">
+          <img width="570" height="570" :src= "product.img" :srcset="product.img" alt="Название товара">
         </div>
         <ul class="pics__list">
           <li class="pics__item">
@@ -52,7 +52,7 @@
       <div class="item__info">
         <span class="item__code">Артикул: 150030</span>
         <h2 class="item__title">
-          Смартфон Xiaomi Mi Mix 3 6/128GB
+          {{ product.title }}
         </h2>
         <div class="item__form">
           <form class="form" action="#" method="POST">
@@ -196,8 +196,19 @@
 </template>
 
 <script>
+import products from '@/data/products';
+import categories from '@/data/categories';
+
     export default {
         props: ['pageParams'],
+        computed: {
+          product() {
+            return products.find(product => product.id === this.pageParams.id)
+          },
+          category() {
+            return categories.find(category => category.id === this.product.categoryId);
+          }
+        }
     }
 
 </script>
