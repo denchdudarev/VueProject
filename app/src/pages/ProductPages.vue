@@ -200,14 +200,22 @@ import products from '@/data/products';
 import categories from '@/data/categories';
 
     export default {
+      data() {
+        return {
+          productAmount: 1,
+        }
+      },
         computed: {
           product() {
             return products.find(product => product.id === +this.$route.params.id)
           },
           category() {
             return categories.find(category => category.id === this.product.categoryId);
-          }
-        }
+          },
+          /*addProductToCart() {
+            {productId: this.product.id, amount: this.productAmount}
+          }*/
+        },
     }
 
 </script>
